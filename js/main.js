@@ -33,3 +33,23 @@ window.addEventListener('click', function (e) {
 		}
 	}
 })
+
+
+
+// Media
+// const gallery = document.getElementById('gallery')
+// const windowMaxWidth = window.matchMedia('(max-width: 860px)')
+
+// if (matchMedia) {
+// 	windowMaxWidth.addListener(WidthChange)
+// 	WidthChange(windowMaxWidth)
+// }
+
+// function WidthChange(windowMaxWidth) {
+// 	if (windowMaxWidth.matches) {
+// 		gallery.style.zoom = '80%'
+// 		console.log(window.innerWidth)
+// 		console.log(gallery.style.zoom)
+// 	}
+// }
+
