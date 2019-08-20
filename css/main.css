@@ -1,0 +1,436 @@
+*, *before, *after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: url(../img/background.jpg) no-repeat center center / cover, #1d1d1d;
+	font-family: 'Droid Serif';
+	/* site size */
+	zoom: 0.9; 
+	-moz-transform: scale(0.9); 
+	-moz-transform-origin: 0 0;
+}
+
+section {
+	transition: filter 	0.25s;
+}
+
+h1, h2 {
+	font-size: 31px;
+	font-weight: normal;
+	color: #ad7835;
+	margin: 0;
+}
+
+.container {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin: 0 auto;
+}
+
+.title {
+	position: relative;
+}
+
+.title::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -10px;
+	width: 60px;
+	height: 2px;
+	background: #ad7835;
+}
+
+.title::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -10px;
+	width: 60px;
+	height: 2px;
+	background: #ad7835;
+}
+
+
+/*	HEADER	*/
+.header {
+	height: 290px;
+	position: relative;
+	background: url(../img/header-background.jpg) center center / cover no-repeat rgba(0,0,0,.6);
+	background-blend-mode: darken;
+}
+
+.header .container {
+	padding-top: 125px;
+}
+
+.header__block {
+	display: flex;
+	width: 602px;
+	height: 287px;
+	margin: 0 auto;
+	padding: 0 34px;
+	background: #373737;
+	border-radius: 3px;
+}
+.header__title {
+	padding-top: 36px;
+}
+
+.header__subtitle {
+	width: 230px;
+	margin-top: 62px;
+	text-align: center;
+	color: #fff;
+	line-height: 20px;
+}
+
+.wrapper-img {
+	width: 302px;
+	margin-left: auto;
+	border-radius: 5px;
+}
+
+.wrapper-img img {
+	border-radius: 4px;
+	box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.50);
+}
+
+.header__avatar {
+	width: 100%;
+	margin-top: -26px;
+}
+
+
+
+/*	ABOUT	*/
+.about {
+	margin-top: 240px;
+}
+
+.about__title {
+	width: 467px;
+	margin: 0 auto;
+}
+
+.about__article {
+	display: flex;
+	justify-content: center;
+	margin-top: 24px;
+}
+
+.article__wrapp {
+	width: 190px;
+	margin: 36px;
+	position: relative;
+}
+
+.article__wrapp:before {
+	content: '';
+	width: 190px;
+	height: 130px;
+	position: absolute;
+	top: -15px;
+	left: -15px;
+	background: #313131;
+	border-radius: 2px;
+}
+
+.article__wrapp:nth-child(1):before {
+	height: 140px;
+}
+
+.article__wrapp:nth-child(2) {
+	margin-top: 76px;
+}
+
+.about__article img {
+	width: 100%;
+	z-index: 2;
+	position: relative;
+	border-radius: 2px;
+	box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.50);
+}
+
+.about__text {
+	display: flex;
+	align-items: center;
+	width: 905px;
+	position: relative;
+	margin: 0 auto;
+	margin-top: 10px;
+	background: rgba(52,52,52,.16);
+	font-size: 18px;
+	line-height: 25px;
+	font-style: italic;
+	color: #bcab96;
+	box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
+}
+
+.about__text:before {
+	content: '';
+	width: 3px;
+	height: 90%;
+	position: absolute;
+	left: 23px;
+	background: #724b19;
+}
+
+
+.about__text p {
+	margin: 0;
+	padding-top: 26px;
+	padding-left: 46px;
+	padding-bottom: 28px;
+	padding-right: 25px;
+}
+
+
+
+/*	GALLERY	*/
+.gallery {
+	margin-top: 103px;
+}
+
+.gallery .container {
+	width: 920px;
+}
+
+.gallery__title {
+	margin-left: 70px;
+	margin-bottom: -45px;
+}
+
+.gellery__img {
+	border-radius: 3.5px;
+	cursor: pointer;
+	box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.68);
+}
+
+.gellery-1 {
+	width: 217px;
+	margin-top: 107px;
+	margin-left: 46px;
+}
+
+.gellery-2 {
+	width: 236px;
+	margin-left: 37px;
+	margin-bottom: 160px;
+}
+
+.gellery-3 {
+	width: 292px;
+	margin-left: 47px;
+	margin-bottom: 191px;
+}
+
+.gellery-4 {
+	width: 247px;
+	margin-top: 92px;
+}
+
+.gellery-5 {
+	width: 291px;
+	margin-left: 67px;
+	margin-bottom: -12px;
+	margin-top: -82px;
+}
+
+.gellery-6 {
+	width: 186px;
+	margin-left: 74px;
+	margin-bottom: 54px;
+	margin-top: -136px;
+}
+
+.gellery-7 {
+	width: 181px;
+	margin-left: 49px;
+	margin-top: 83px;
+}
+
+.gellery-8 {
+	width: 255px;
+	margin-left: 102px;
+	margin-top: 97px;
+	margin-bottom: -97px;
+}
+
+.gellery-9 {
+	width: 249px;
+	margin-left: 60px;
+	margin-bottom: 74px;
+}
+
+.gellery-10 {
+	width: 241px;
+	margin-left: 34px;
+	margin-top: 86px;
+}
+
+.gellery-11 {
+	width: 201px;
+	margin-left: 105px;
+	margin-bottom: -47px;
+}
+
+.gellery-12 {
+	width: 252px;
+	margin-left: 75px;
+	margin-bottom: -56px;
+}
+
+.gellery-13 {
+	width: 304px;
+	margin-top: 77px;
+}
+
+.gellery-14 {
+	width: 250px;
+	margin-left: 43px;
+	margin-bottom: -80px;
+}
+
+.gellery-15 {
+	width: 266px;
+	margin-left: 46px;
+	margin-bottom: -50px;
+}
+
+.gellery-16 {
+	width: 195px;
+	margin-top: 84px;
+	margin-left: 37px;
+}
+
+.gellery-17 {
+	width: 254px;
+	margin-left: 104px;
+	margin-bottom: -163px;
+}
+
+.gellery-18 {
+	width: 204px;
+	margin-left: 90px;
+	margin-bottom: -29px;
+}
+
+/*modal*/
+.modal {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 100;
+}
+
+.modal__img {
+	display: none;
+	max-width: 95%;
+	max-height: 95%;
+	border-radius: 4px;
+}
+
+
+
+/*	FOOTER	*/
+.footer {
+	margin-top: 310px;
+	padding-top: 30px;
+	padding-bottom: 40px;
+	background: #212121;
+}
+
+.contact {
+	display: flex;
+	justify-content: center;
+}
+
+.contact__logo {
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.contact__logo > * {
+	display: flex;
+	justify-content: center;
+	height: 41px;
+	width: 41px;
+	border: solid 1.3px rgba(173,120,53,.8);
+	border-radius: 2px;
+}
+
+.contact__logo:hover {
+	background: #ad7835;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+
+.svg-icon {
+	width: 65%;
+	fill: #ad7835;
+	transition: all 0.5s;
+}
+
+.contact__logo:hover .svg-icon {
+	fill: #1d1d1d;
+}
+
+/*viber*/
+.viber__phone {
+	fill: #1d1d1d;
+}
+
+.contact__logo:hover .viber__phone {
+	fill: #ad7835;
+}
+
+/*whatsapp*/
+.whatsapp-icon__phone {
+	fill: #1d1d1d;
+}
+
+.contact__logo:hover .whatsapp-icon__background {
+	fill: #1d1d1d;
+}
+
+.contact__logo:hover .whatsapp-icon__phone {
+	fill: #ad7835;
+}
+
+.phone {
+	width: 220px;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	margin-top: 13px;
+	border: solid 1.3px rgba(173,120,53,.8);
+	border-radius: 2px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.phone a {
+	padding: 0 23%;
+	line-height: 30px;
+	color: #ad7835;
+	text-decoration: none;
+	transition: all 0.3s;
+}
+
+.phone:hover {
+	background: #ad7835;
+}
+
+.phone:hover a {
+	color: #1d1d1d;
+}
