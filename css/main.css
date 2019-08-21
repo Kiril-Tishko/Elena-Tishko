@@ -5,8 +5,9 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: url(../img/background.jpg) no-repeat center center / cover, #1d1d1d;
+	background: url(../img/background.jpg) repeat-y center center / contain, #1d1d1d;
 	font-family: 'Droid Serif';
+	color: #fff6eb;
 	/* site size */
 	zoom: 0.9; 
 	-moz-transform: scale(0.9); 
@@ -17,11 +18,8 @@ section {
 	transition: filter 	0.25s;
 }
 
-h1, h2 {
-	font-size: 31px;
-	font-weight: normal;
-	color: #ad7835;
-	margin: 0;
+a {
+	color: #fff6eb;
 }
 
 .container {
@@ -32,6 +30,10 @@ h1, h2 {
 
 .title {
 	position: relative;
+	font-size: 31px;
+	font-weight: normal;
+	color: #ad7835;
+	margin: 0;
 }
 
 .title::before {
@@ -72,7 +74,6 @@ h1, h2 {
 	margin-top: 62px;
 	text-align: center;
 	line-height: 20px;
-	color: #fff6eb;
 	font-style: italic;
 }
 
@@ -155,7 +156,6 @@ h1, h2 {
 	font-size: 18px;
 	line-height: 25px;
 	font-style: italic;
-	color: #fff6eb;
 	box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
 }
 
@@ -334,31 +334,71 @@ h1, h2 {
 /*	FOOTER	*/
 .footer {
 	margin-top: 310px;
-	padding-top: 30px;
-	padding-bottom: 40px;
+	padding: 40px 0;
+	text-align: center;
+	font-size: 11px;
+	text-transform: uppercase;
 	background: #212121;
 }
 
-.contact {
+.footer .container {
 	display: flex;
 	justify-content: center;
 }
 
-.contact__logo {
-	margin-left: 8px;
-	margin-right: 8px;
+.footer section {
+	width: 200px;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
-.contact__logo > * {
+.footer .title {
+	margin-bottom: 13px;
+	font-size: 15px;
+}
+
+.footer .title:before {
+	content: none;
+}
+
+/*site*/
+.site p {
+	max-width: 165px;
+	margin: 0 auto;
+	text-transform: none;
+}
+
+.site p:nth-child(2) {
+	margin-bottom: 10px;
+}
+
+/*phone*/
+.phone {
+	cursor: pointer;
+}
+
+.phone a {
+	font-size: 15px;
+	color: #fff;
+	text-decoration: none;
+}
+
+/*social network*/
+.social-network {
 	display: flex;
 	justify-content: center;
-	height: 41px;
-	width: 41px;
-	border: solid 1.3px rgba(173,120,53,.8);
+	margin-top: 10px;
+}
+
+.social-network__logo > * {
+	display: flex;
+	justify-content: center;
+	height: 38px;
+	width: 35px;
 	border-radius: 2px;
 }
 
-.contact__logo:hover {
+.social-network__logo:hover {
 	background: #ad7835;
 	transition: all 0.3s;
 	cursor: pointer;
@@ -370,7 +410,7 @@ h1, h2 {
 	transition: all 0.5s;
 }
 
-.contact__logo:hover .svg-icon {
+.social-network__logo:hover .svg-icon {
 	fill: #1d1d1d;
 }
 
@@ -379,7 +419,7 @@ h1, h2 {
 	fill: #1d1d1d;
 }
 
-.contact__logo:hover .viber__phone {
+.social-network__logo:hover .viber__phone {
 	fill: #ad7835;
 }
 
@@ -388,40 +428,12 @@ h1, h2 {
 	fill: #1d1d1d;
 }
 
-.contact__logo:hover .whatsapp-icon__background {
+.social-network__logo:hover .whatsapp-icon__background {
 	fill: #1d1d1d;
 }
 
-.contact__logo:hover .whatsapp-icon__phone {
+.social-network__logo:hover .whatsapp-icon__phone {
 	fill: #ad7835;
-}
-
-.phone {
-	width: 220px;
-	display: flex;
-	justify-content: center;
-	margin: 0 auto;
-	margin-top: 13px;
-	border: solid 1.3px rgba(173,120,53,.8);
-	border-radius: 2px;
-	cursor: pointer;
-	transition: all 0.3s;
-}
-
-.phone a {
-	padding: 0 23%;
-	line-height: 30px;
-	color: #ad7835;
-	text-decoration: none;
-	transition: all 0.3s;
-}
-
-.phone:hover {
-	background: #ad7835;
-}
-
-.phone:hover a {
-	color: #1d1d1d;
 }
 
 
@@ -453,6 +465,10 @@ h1, h2 {
 }
 
 @media (max-width: 690px) {
+	body {
+		background-size: 180%;
+	}
+
 	.header .container {
 		padding-top: 18px;
 	}
@@ -530,9 +546,22 @@ h1, h2 {
 	.footer {
 		margin-top: 130px;
 	}
+
+	.footer .container {
+		flex-direction: column;
+	}
+
+	.footer section {
+		margin: 0 auto;
+		margin-top: 30px;
+	}
 }
 
 @media (max-width: 460px) {
+	body {
+		background-size: 240%;
+	}
+
 	.about__title {
 		width: auto;
 		text-align: center;
