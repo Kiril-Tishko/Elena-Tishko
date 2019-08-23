@@ -46,19 +46,3 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 	phone.setAttribute('href', 'tel:+380969409698')
 	phone.setAttribute('title', 'Позвонить сейчас')
 }
-
-// const gallery = document.getElementById('gallery')
-// const windowMaxWidth = window.matchMedia('(max-width: 860px)')
-
-// if (matchMedia) {
-// 	windowMaxWidth.addListener(WidthChange)
-// 	WidthChange(windowMaxWidth)
-// }
-
-// function WidthChange(windowMaxWidth) {
-// 	if (windowMaxWidth.matches) {
-// 		gallery.style.zoom = '80%'
-// 		console.log(window.innerWidth)
-// 		console.log(gallery.style.zoom)
-// 	}
-// }
