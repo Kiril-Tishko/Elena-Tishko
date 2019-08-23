@@ -37,8 +37,8 @@ window.addEventListener('click', function (e) {
 
 
 // Media
-// const viber = document.getElementById('viber')
-// const phone = document.getElementById('phone')
+const viber = document.getElementById('viber')
+const phone = document.getElementById('phone')
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
 	viber.removeAttribute('href')
