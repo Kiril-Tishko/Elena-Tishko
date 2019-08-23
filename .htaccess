@@ -11,7 +11,7 @@ AddType image/svg+xml .svg
 AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-opentype image/svg+xml
 
 ExpiresActive On
-ExpiresDefault "access 1 day"
+ExpiresDefault "access plus 5 seconds"
 
 # Cache Images
 ExpiresByType image/x-icon "access plus 2592000 seconds"
