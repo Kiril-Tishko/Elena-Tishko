@@ -2,6 +2,20 @@
 	box-sizing: border-box;
 }
 
+html {
+	overflow: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 7px;  /* Remove scrollbar space */
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -72,7 +86,9 @@ a {
 	width: 230px;
 	margin-top: 62px;
 	text-align: center;
+	font-size: 18px;
 	line-height: 20px;
+	color: #fff;
 	font-style: italic;
 }
 
@@ -573,6 +589,14 @@ a {
 
 	.footer__social-network {
 		margin-top: 9px;
+	}
+
+	.modal {
+		display: none !important;
+	}
+
+	section {
+		filter: none !important;
 	}
 }
 
