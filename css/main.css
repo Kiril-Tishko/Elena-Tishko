@@ -231,7 +231,7 @@ a {
 .gellery-6 {
 	width: 186px;
 	margin-left: 74px;
-	margin-bottom: 54px;
+	margin-bottom: 26px;
 	margin-top: -136px;
 }
 
@@ -323,6 +323,7 @@ a {
 
 .modal__img {
 	display: none;
+	height: 100%;
 	max-width: 95%;
 	max-height: 95%;
 	border-radius: 4px;
@@ -372,10 +373,6 @@ a {
 }
 
 /*phone*/
-.phone {
-	cursor: pointer;
-}
-
 .phone a {
 	font-size: 15px;
 	color: #fff;
@@ -484,13 +481,13 @@ a {
 		margin: 0 auto;
 	}
 
-	 .header__subtitle {
-	 	width: auto;
-	 	margin-top: 40px;
-	 	margin-bottom: 0;
-	 	padding: 0 5px;
-	 	text-align: center;
-	 }
+	.header__subtitle {
+		width: auto;
+		margin-top: 40px;
+		margin-bottom: 0;
+		padding: 0 5px;
+		text-align: center;
+	}
 
 	.header__avatar {
 		margin: 0;
@@ -515,7 +512,7 @@ a {
 @media (max-width: 525px) {
 	/*gallery*/
 	.gallery {
-    margin-top: 160px;
+		margin-top: 160px;
 	}
 
 	.gallery__title {
@@ -568,6 +565,10 @@ a {
 
 	.footer .title {
 		margin-bottom: 7px;
+	}
+
+	.phone {
+		cursor: pointer;
 	}
 
 	.footer__social-network {
