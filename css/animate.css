@@ -386,29 +386,24 @@
 }
 
 @keyframes swing {
-  16% {
-    -webkit-transform: rotate3d(0, 0, 1, 20deg);
-    transform: rotate3d(0, 0, 1, 12deg);
-  }
-
-  32% {
+  20% {
     -webkit-transform: rotate3d(0, 0, 1, 15deg);
-    transform: rotate3d(0, 0, 1, -9deg);
+    transform: rotate3d(0, 0, 1, 15deg);
   }
 
-  48% {
-    -webkit-transform: rotate3d(0, 0, 1, 10deg);
-    transform: rotate3d(0, 0, 1, 6deg);
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+    transform: rotate3d(0, 0, 1, -10deg);
   }
 
-  64% {
-    -webkit-transform: rotate3d(0, 0, 1, -5deg);
-    transform: rotate3d(0, 0, 1, -3deg);
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg);
   }
 
   80% {
-    -webkit-transform: rotate3d(0, 0, 1, 5deg);
-    transform: rotate3d(0, 0, 1, 3deg);
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg);
   }
 
   to {
