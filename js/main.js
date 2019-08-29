@@ -46,3 +46,141 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 	phone.setAttribute('href', 'tel:+380969409698')
 	phone.setAttribute('title', 'Позвонить сейчас')
 }
+
+
+// Atimation
+// img load atimation
+function loadImgAnimation() {
+	const images = document.querySelectorAll('.gellery__img');
+
+	const options = {
+		root: null,
+		rootMargin: '0px',
+		threshold: 0.3
+	}
+
+	function handleImg(myImg, observer) {
+		myImg.forEach(myImgSingle => {
+			if (myImgSingle.intersectionRatio > 0) {
+				loadImage(myImgSingle.target);
+			}
+		})
+	}
+
+	function loadImage(image) {
+		image.classList.add('animated')
+		image.classList.add('bounceInUp')
+		image.classList.add('slow')
+		image.style.visibility = 'visible'
+	}
+
+	const observer = new IntersectionObserver(handleImg, options);
+
+	images.forEach(img => {
+		observer.observe(img);
+	})
+}
+
+loadImgAnimation()
+
+
+// Load about text
+function loadAboutText() {
+	const images = document.querySelectorAll('.about__text');
+
+	const options = {
+		root: null,
+		rootMargin: '0px',
+		threshold: 1
+	}
+
+	function handleImg(myImg, observer) {
+		myImg.forEach(myImgSingle => {
+			if (myImgSingle.intersectionRatio > 0) {
+				loadImage(myImgSingle.target);
+			}
+		})
+	}
+
+	function loadImage(image) {
+		image.classList.add('animated')
+		image.classList.add('fadeIn')
+		image.classList.add('slow')
+		image.style.visibility = 'visible'
+
+		typeText()
+	}
+
+	const observer = new IntersectionObserver(handleImg, options);
+
+	images.forEach(img => {
+		observer.observe(img);
+	})
+}
+
+loadAboutText()
+
+
+
+// Scroll effect
+function Scroll() {
+	let positionY = window.pageYOffset
+
+	// gallery title
+	const galleryTitle = document.getElementById('gallery__title')
+	if (positionY > 300) {
+		galleryTitle.classList.add('visible', 'animated', 'fadeInLeft', 'slow')
+	}
+
+	// footer title
+	while(true) {
+		let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+		if (windowRelativeBottom < document.documentElement.clientHeight + 60) {
+			const footerTitle = document.querySelectorAll('.footer .title')
+			for (var i = 0; i < footerTitle.length; i++) {
+				footerTitle[i].classList.add('animated', 'swing', 'fast')
+			}
+		} break
+	}
+}
+
+window.addEventListener('scroll', Scroll)
+
+
+
+// execute function only 1 time
+var firstTime = false;
+
+// Typed.js
+function typeText() {
+	if(!firstTime) {
+		jQuery(document).ready(function () {
+			var typed = new Typed('#typed', {
+				stringsElement: '#typed-strings',
+				typeSpeed: 6,
+				backSpeed: 10,
+				startDelay: 1500,
+				showCursor: false
+			})
+		})
+		firstTime = true;
+	}
+}
+
+
+if (window.matchMedia("(max-width: 686px)").matches) {
+	function typeText() {
+		if(!firstTime) {
+			jQuery(document).ready(function () {
+				var typed = new Typed('#typed', {
+					stringsElement: '#typed-strings',
+					typeSpeed: 6,
+					backSpeed: 10,
+					startDelay: 300,
+					showCursor: false
+				})
+			})
+			firstTime = true;
+		}
+	}
+} 
