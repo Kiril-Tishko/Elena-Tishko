@@ -14,12 +14,13 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    background: #1d1d1d;
+  background: #1d1d1d;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #333;
-  border-radius: 5px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
 }
 
 body {
@@ -236,7 +237,10 @@ a {
 /*  GALLERY */
 .gallery {
   margin-top: 120px;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .gallery .container {
@@ -246,7 +250,10 @@ a {
 .gallery__title {
   margin-left: 70px;
   margin-bottom: -45px;
-  user-select: text;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
 }
 
 .gellery__img {
@@ -469,7 +476,7 @@ a {
   max-width: 95%;
   max-height: 95%;
   -webkit-border-radius: 3px;
-          border-radius: 3px;
+  border-radius: 3px;
   zoom: 2;
   -moz-transform: scale(2); 
   -moz-transform-origin: 0 0;
@@ -491,17 +498,20 @@ a {
 }
 
 .modal-close-btn {
-  width: 27px;
-  height: 27px;
-  top: 15px;
-  right: 8px;
+  width: 45px;
+  height: 45px;
+  top: 0;
+  right: 0;
   margin: 0;
   padding: 0;
   z-index: 6;
 }
 
 .modal-close-btn svg {
-  width: 100% !important;
+  width: 60% !important;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   fill: #777;
 }
 
@@ -532,12 +542,16 @@ a {
   position: absolute;
   opacity: 0;
   fill: #555;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
   transition: all 0.5s;
 }
 
 .modal-left-btn:hover >  svg,
 .modal-right-btn:hover > svg {
   opacity: 1;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -973,4 +987,8 @@ a {
 
 .visible {
   visibility: visible;
+}
+
+.displayFlex {
+  display: flex;
 }

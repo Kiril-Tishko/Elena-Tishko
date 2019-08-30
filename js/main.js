@@ -9,9 +9,15 @@ const modalRightBtnElem = document.getElementById('modal-right-btn')
 
 // show modal
 var handler = function() {
-	let index = this.getAttribute('data-index')
+let index = this.getAttribute('data-index')
 
-	modalElem.style.display = 'flex'
+	// // hide all modal img
+	// for (var i = 0; i < modalImgElem.length; i++) {
+	// 	modalImgElem[i].style.display = 'none'
+	// 	modalImgElem[i].classList.remove('animated', 'zoomIn')
+	// }
+
+	modalElem.classList.add('displayFlex')
 	modalImgElem[index].style.display = 'block'
 	// modal animatin
 	modalImgElem[index].classList.add('animated', 'zoomIn')
@@ -28,7 +34,7 @@ var handler = function() {
 			} else {
 				modalLeftBtnElem.disabled = false
 			}
-
+	// left btn
 	modalLeftBtnElem.addEventListener('click', function () {
 		if (index > 0) {
 			// hide all img
@@ -56,6 +62,8 @@ var handler = function() {
 	} else {
 		modalRightBtnElem.disabled = false
 	}
+
+	// right btn
 	modalRightBtnElem.addEventListener('click', function () {
 		if (index < modalImgElem.length - 1) {
 			// hide all img
@@ -78,34 +86,44 @@ var handler = function() {
 	})
 }
 
+// aplay function by click on img
 for (var i = 0; i < gelleryImgElem.length; i++) {
 	gelleryImgElem[i].setAttribute('data-index', i)
 	gelleryImgElem[i].onclick = handler
 }
 
 // close menu btn
-modalCloseBtnElem.addEventListener('click', function () {
-	modal.style.display = 'none'
+function CloseMenu () {
+	modalElem.classList.remove('displayFlex')
 	for (var i = 0; i < modalImgElem.length; i++) {
 		modalImgElem[i].style.display = 'none'
 	}
 	for (var i = 0; i < section.length; i++) {
 		section[i].style.filter = 'blur(0)'
 	}
-})
+}
+
+modalCloseBtnElem.addEventListener('click', CloseMenu)
+
+// close modal by screen rotate
+window.addEventListener("orientationchange", function() {
+	if (window.orientation = 90) {
+		CloseMenu()
+	}
+}, false);
 
 
 
 // MEDIA
 		// footer link for mobile
-	const viber = document.getElementById('viber')
-	const phone = document.getElementById('phone')
+		const viber = document.getElementById('viber')
+		const phone = document.getElementById('phone')
 
-	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-		viber.removeAttribute('href')
-		viber.setAttribute('href', 'viber://add?number=+380969409698')
-		phone.setAttribute('href', 'tel:+380969409698')
-		phone.setAttribute('title', 'Позвонить сейчас')
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+			viber.removeAttribute('href')
+			viber.setAttribute('href', 'viber://add?number=+380969409698')
+			phone.setAttribute('href', 'tel:+380969409698')
+			phone.setAttribute('title', 'Позвонить сейчас')
 		// modal mobile btn
 		modalLeftBtnElem.classList.add('modal-mobile-btn')
 		modalRightBtnElem.classList.add('modal-mobile-btn')
