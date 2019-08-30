@@ -1,20 +1,81 @@
-let gelleryImgElem = document.getElementsByClassName('gellery__img')
+// MODAL
 const modalElem = document.getElementById('modal')
-let modalImgElem = document.getElementsByClassName('modal__img')
 let section = document.getElementsByTagName('section')
+let gelleryImgElem = document.getElementsByClassName('gellery__img')
+let modalImgElem = document.getElementsByClassName('modal__img')
+const modalCloseBtnElem = document.getElementById('modal-close-btn')
+const modalLeftBtnElem = document.getElementById('modal-left-btn')
+const modalRightBtnElem = document.getElementById('modal-right-btn')
 
+// show modal
 var handler = function() {
-	var index = this.getAttribute('data-index')
+	let index = this.getAttribute('data-index')
 
 	modalElem.style.display = 'flex'
 	modalImgElem[index].style.display = 'block'
 	// modal animatin
-	modalImgElem[index].classList.add('animated')
-	modalImgElem[index].classList.add('zoomIn')
+	modalImgElem[index].classList.add('animated', 'zoomIn')
 	// background blur
 	for (var i = 0; i < section.length; i++) {
 		section[i].style.filter = 'blur(4.5px)'
 	}
+
+	// modal slider
+		// left btn
+			// left btn disabled
+			if (index < 1) {
+				modalLeftBtnElem.disabled = true
+			} else {
+				modalLeftBtnElem.disabled = false
+			}
+
+	modalLeftBtnElem.addEventListener('click', function () {
+		if (index > 0) {
+			// hide all img
+			for (var i = 0; i < modalImgElem.length; i++) {
+				modalImgElem[i].style.display = 'none'
+				modalImgElem[i].classList.remove('animated', 'zoomIn')
+			}
+			// show left img
+			index--
+			modalImgElem[index].style.display = 'block'
+			// activate right btn
+			modalRightBtnElem.disabled = false
+			// disabled left
+			if (index <= 0) {
+				modalLeftBtnElem.disabled = true
+			} else {
+				modalLeftBtnElem.disabled = false
+			}
+		}
+	})
+
+	// disabled right btn (by _clicking_ on the last picture)
+	if (index >= modalImgElem.length - 1) {
+		modalRightBtnElem.disabled = true
+	} else {
+		modalRightBtnElem.disabled = false
+	}
+	modalRightBtnElem.addEventListener('click', function () {
+		if (index < modalImgElem.length - 1) {
+			// hide all img
+			for (var i = 0; i < modalImgElem.length; i++) {
+				modalImgElem[i].style.display = 'none'
+				modalImgElem[i].classList.remove('animated', 'zoomIn')
+			}
+			// show right img
+			index++
+			modalImgElem[index].style.display = 'block'
+			// activate left btn
+			modalLeftBtnElem.disabled = false
+			// disabled right btn (by _slide_ on the last picture)
+			if (index >= modalImgElem.length - 1) {
+				modalRightBtnElem.disabled = true
+			} else {
+				modalRightBtnElem.disabled = false
+			}
+		}
+	})
 }
 
 for (var i = 0; i < gelleryImgElem.length; i++) {
@@ -22,66 +83,67 @@ for (var i = 0; i < gelleryImgElem.length; i++) {
 	gelleryImgElem[i].onclick = handler
 }
 
-window.addEventListener('click', function (e) {
-	if(e.target == modal) {
-		modal.style.display = 'none';
-		for (var i = 0; i < modalImgElem.length; i++) {
-			modalImgElem[i].style.display = 'none'
-		}
-		for (var i = 0; i < section.length; i++) {
-			section[i].style.filter = 'blur(0)'
-		}
+// close menu btn
+modalCloseBtnElem.addEventListener('click', function () {
+	modal.style.display = 'none'
+	for (var i = 0; i < modalImgElem.length; i++) {
+		modalImgElem[i].style.display = 'none'
+	}
+	for (var i = 0; i < section.length; i++) {
+		section[i].style.filter = 'blur(0)'
 	}
 })
 
 
 
-// Media
-const viber = document.getElementById('viber')
-const phone = document.getElementById('phone')
+// MEDIA
+		// footer link for mobile
+	const viber = document.getElementById('viber')
+	const phone = document.getElementById('phone')
 
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-	viber.removeAttribute('href')
-	viber.setAttribute('href', 'viber://add?number=+380969409698')
-	phone.setAttribute('href', 'tel:+380969409698')
-	phone.setAttribute('title', 'Позвонить сейчас')
-}
-
-
-// Atimation
-// img load atimation
-function loadImgAnimation() {
-	const images = document.querySelectorAll('.gellery__img');
-
-	const options = {
-		root: null,
-		rootMargin: '0px',
-		threshold: 0.3
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+		viber.removeAttribute('href')
+		viber.setAttribute('href', 'viber://add?number=+380969409698')
+		phone.setAttribute('href', 'tel:+380969409698')
+		phone.setAttribute('title', 'Позвонить сейчас')
+		// modal mobile btn
+		modalLeftBtnElem.classList.add('modal-mobile-btn')
+		modalRightBtnElem.classList.add('modal-mobile-btn')
 	}
 
-	function handleImg(myImg, observer) {
-		myImg.forEach(myImgSingle => {
-			if (myImgSingle.intersectionRatio > 0) {
-				loadImage(myImgSingle.target);
-			}
+
+// ANIMATION
+	// img load atimation
+	function loadImgAnimation() {
+		const images = document.querySelectorAll('.gellery__img');
+
+		const options = {
+			root: null,
+			rootMargin: '0px',
+			threshold: 0.3
+		}
+
+		function handleImg(myImg, observer) {
+			myImg.forEach(myImgSingle => {
+				if (myImgSingle.intersectionRatio > 0) {
+					loadImage(myImgSingle.target);
+				}
+			})
+		}
+
+		function loadImage(image) {
+			image.classList.add('animated', 'bounceInUp', 'slow')
+			image.style.visibility = 'visible'
+		}
+
+		const observer = new IntersectionObserver(handleImg, options);
+
+		images.forEach(img => {
+			observer.observe(img)
 		})
 	}
 
-	function loadImage(image) {
-		image.classList.add('animated')
-		image.classList.add('bounceInUp')
-		image.classList.add('slow')
-		image.style.visibility = 'visible'
-	}
-
-	const observer = new IntersectionObserver(handleImg, options);
-
-	images.forEach(img => {
-		observer.observe(img);
-	})
-}
-
-loadImgAnimation()
+	loadImgAnimation()
 
 
 // Load about text
@@ -97,15 +159,13 @@ function loadAboutText() {
 	function handleImg(myImg, observer) {
 		myImg.forEach(myImgSingle => {
 			if (myImgSingle.intersectionRatio > 0) {
-				loadImage(myImgSingle.target);
+				loadImage(myImgSingle.target)
 			}
 		})
 	}
 
 	function loadImage(image) {
-		image.classList.add('animated')
-		image.classList.add('fadeIn')
-		image.classList.add('slow')
+		image.classList.add('animated', 'fadeIn', 'slow')
 		image.style.visibility = 'visible'
 
 		typeText()
@@ -114,7 +174,7 @@ function loadAboutText() {
 	const observer = new IntersectionObserver(handleImg, options);
 
 	images.forEach(img => {
-		observer.observe(img);
+		observer.observe(img)
 	})
 }
 
@@ -134,7 +194,7 @@ function Scroll() {
 
 	// footer title
 	while(true) {
-		let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+		let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom
 		if (windowRelativeBottom < document.documentElement.clientHeight + 60) {
 			const footerTitle = document.querySelectorAll('.footer .title')
 			for (var i = 0; i < footerTitle.length; i++) {
@@ -163,7 +223,7 @@ function typeText() {
 				showCursor: false
 			})
 		})
-		firstTime = true;
+		firstTime = true
 	}
 }
 
@@ -180,7 +240,7 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 					showCursor: false
 				})
 			})
-			firstTime = true;
+			firstTime = true
 		}
 	}
-} 
+}
