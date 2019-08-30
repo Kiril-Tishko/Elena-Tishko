@@ -500,7 +500,7 @@ a {
 .modal-close-btn {
   width: 45px;
   height: 45px;
-  top: 0;
+  top: 5px;
   right: 0;
   margin: 0;
   padding: 0;
@@ -509,9 +509,6 @@ a {
 
 .modal-close-btn svg {
   width: 60% !important;
-  position: absolute;
-  left: 0;
-  bottom: 0;
   fill: #777;
 }
 
