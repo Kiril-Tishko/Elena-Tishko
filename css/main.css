@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 
-
 html {
   overflow: scroll;
   overflow-x: hidden;
@@ -20,7 +19,7 @@ html {
 ::-webkit-scrollbar-thumb {
   background: #333;
   -webkit-border-radius: 5px;
-          border-radius: 5px;
+  border-radius: 5px;
 }
 
 body {
@@ -227,8 +226,8 @@ a {
   min-height: 30px;
   margin: 0;
   padding-top: 26px;
-  padding-left: 46px;
   padding-bottom: 28px;
+  padding-left: 46px;
   padding-right: 25px;
 }
 
@@ -238,9 +237,9 @@ a {
 .gallery {
   margin-top: 120px;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .gallery .container {
@@ -251,9 +250,9 @@ a {
   margin-left: 70px;
   margin-bottom: -45px;
   -webkit-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 .gellery__img {
@@ -266,7 +265,22 @@ a {
   cursor: pointer;
   -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.68);
   box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.68);
+  transition: filter 0.2s, opacity 0.2s;
+  background-color:#000;
 }
+
+.focus {
+  filter: blur(0);
+  opacity: 1;
+  transition: opacity 100s, filter 10s;
+}
+
+.noFocus {
+  /*filter: blur(8px);*/
+  opacity: 0.2;
+  transition: opacity 100s, filter 10s;
+}
+
 
 .gellery-1 {
   width: 217px;
@@ -885,12 +899,19 @@ a {
   .gellery__img {
     width: 160vw;
     margin: 0;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     
     cursor: default;
     /*-webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;*/
+  }
+
+  .gellery-5 {
+    -webkit-box-ordinal-group: 9;
+    -webkit-order: 8;
+    -ms-flex-order: 8;
+    order: 8;
   }
 
   .gellery-17 {
@@ -928,13 +949,6 @@ a {
     -webkit-order: 2;
     -ms-flex-order: 2;
     order: 2;
-  }
-
-  .gellery-5 {
-    -webkit-box-ordinal-group: 9;
-    -webkit-order: 8;
-    -ms-flex-order: 8;
-    order: 8;
   }
 
   .footer .title {
