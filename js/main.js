@@ -128,11 +128,18 @@ window.addEventListener("orientationchange", function() {
 	// img load atimation
 	function loadImgAnimation() {
 		const images = document.querySelectorAll('.gellery__img');
-
-		const options = {
+		let options = {
 			root: null,
 			rootMargin: '0px',
 			threshold: 0.3
+		}
+
+		if (window.matchMedia("(max-width: 525px)").matches) {
+			options = {
+				root: null,
+				rootMargin: '-80px 0px -80px 0px',
+				threshold: 0
+			}
 		}
 
 		function handleImg(myImg, observer) {
@@ -247,7 +254,7 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 				var typed = new Typed('#typed', {
 					stringsElement: '#typed-strings',
 					typeSpeed: 6,
-					backSpeed: 10,
+					backSpeed: 8,
 					startDelay: 300,
 					showCursor: false
 				})
@@ -275,19 +282,15 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 			threshold: 0
 		}
 
-
 		// the event when img in the middel of screen
 		var callback = function(entries, observer) { 
 			entries.forEach(entry => {
 				if (entry.isIntersecting == true) {
-					console.log(entry.time)
 					const img = entry.target
-					img.classList.add('focus')
 					img.classList.remove('noFocus')
 				} else if (entry.isIntersecting == false) {
 					const img = entry.target
 					img.classList.add('noFocus')
-					img.classList.remove('focus')
 				}
 			});
 		};
