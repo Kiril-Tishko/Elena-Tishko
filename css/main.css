@@ -4,7 +4,6 @@
 }
 
 html {
-  overflow: scroll;
   overflow-x: hidden;
 }
 
@@ -498,8 +497,8 @@ a {
 }
 
 .modal-close-btn {
-  width: 45px;
-  height: 45px;
+  width: 5vw;
+  height: 5vw;
   top: 5px;
   right: 0;
   margin: 0;
@@ -508,7 +507,7 @@ a {
 }
 
 .modal-close-btn svg {
-  width: 50% !important;
+  width: 53% !important;
   fill: #777;
 }
 
@@ -531,7 +530,7 @@ a {
 }
 
 .modal-btn svg {
-  width: 45px;
+  width: 4.1vw;
 }
 
 .modal-left-btn svg,
@@ -838,10 +837,6 @@ a {
 
   .noFocus {
     opacity: 0.2 !important;
-  }
-
-  .gellery__img img:first-child {
-    opacity: 1 !important;
   }
 
   .gellery-5 {

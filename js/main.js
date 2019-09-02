@@ -1,5 +1,6 @@
 // MODAL
 const modalElem = document.getElementById('modal')
+const html = document.getElementsByTagName('html')[0]
 let section = document.getElementsByTagName('section')
 let gelleryImgElem = document.getElementsByClassName('gellery__img')
 let modalImgElem = document.getElementsByClassName('modal__img')
@@ -9,10 +10,16 @@ const modalRightBtnElem = document.getElementById('modal-right-btn')
 
 // show modal
 var handler = function() {
+	// clicked img
 	let index = this.getAttribute('data-index')
-
+	// modall is visible
 	modalElem.classList.add('displayFlex')
 	modalImgElem[index].style.display = 'block'
+	// blocking scroll for mobile
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+		html.style.overflowY = 'hidden'
+	}
+
 	// modal animatin
 	modalImgElem[index].classList.add('animated', 'zoomIn')
 	// background blur
@@ -91,6 +98,7 @@ function CloseMenu () {
 	modalElem.classList.remove('displayFlex')
 	for (var i = 0; i < modalImgElem.length; i++) {
 		modalImgElem[i].style.display = 'none'
+		html.style.overflowY = 'scroll'
 	}
 	for (var i = 0; i < section.length; i++) {
 		section[i].style.filter = 'blur(0)'
