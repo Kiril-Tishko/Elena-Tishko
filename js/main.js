@@ -16,8 +16,12 @@ var handler = function() {
 	modalElem.classList.add('displayFlex')
 	modalImgElem[index].style.display = 'block'
 	// blocking scroll for mobile
+	function myPrevDef(e){
+		e.preventDefault();
+	}
+	window.myPrevDef = myPrevDef;
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-		window.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+		window.addEventListener('touchmove', myPrevDef, {passive: false});
 	}
 	// modal animatin
 	modalImgElem[index].classList.add('animated', 'zoomIn')
@@ -101,6 +105,9 @@ function CloseMenu () {
 	for (var i = 0; i < section.length; i++) {
 		section[i].style.filter = 'blur(0)'
 	}
+	// // allow to scroll
+	window.removeEventListener('touchmove', myPrevDef, {passive: false});
+	// window.addEventListener('touchmove', function () {console.log(1)});
 }
 
 modalCloseBtnElem.addEventListener('click', CloseMenu)
