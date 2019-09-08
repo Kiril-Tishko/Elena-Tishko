@@ -833,7 +833,7 @@ a {
     -webkit-box-shadow: none;
     box-shadow: none;
     /*not work*/
-    /*transition: opacity 0.2s;*/
+    transition: opacity 0.15s;
   }
 
   .noFocus {
@@ -917,13 +917,11 @@ a {
     }
 
     from {
-      opacity: 0;
       -webkit-transform: translate3d(0, 3000px, 0);
       transform: translate3d(0, 3000px, 0);
     }
 
     60% {
-      opacity: 0.7;
       -webkit-transform: translate3d(0, -20px, 0);
       transform: translate3d(0, -20px, 0);
     }
@@ -955,13 +953,11 @@ a {
     }
 
     from {
-      opacity: 0;
       -webkit-transform: translate3d(0, 3000px, 0);
       transform: translate3d(0, 3000px, 0);
     }
 
     60% {
-      opacity: 0.7;
       -webkit-transform: translate3d(0, -20px, 0);
       transform: translate3d(0, -20px, 0);
     }

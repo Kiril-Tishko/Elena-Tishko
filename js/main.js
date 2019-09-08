@@ -16,10 +16,9 @@ var handler = function() {
 	modalElem.classList.add('displayFlex')
 	modalImgElem[index].style.display = 'block'
 	// blocking scroll for mobile
-	// if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-	// 	document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
-	// }
-
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+		window.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+	}
 	// modal animatin
 	modalImgElem[index].classList.add('animated', 'zoomIn')
 	// background blur
