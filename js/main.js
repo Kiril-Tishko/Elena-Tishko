@@ -16,9 +16,9 @@ var handler = function() {
 	modalElem.classList.add('displayFlex')
 	modalImgElem[index].style.display = 'block'
 	// blocking scroll for mobile
-	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-		html.style.overflowY = 'hidden'
-	}
+	// if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+	// 	document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
+	// }
 
 	// modal animatin
 	modalImgElem[index].classList.add('animated', 'zoomIn')
@@ -28,13 +28,13 @@ var handler = function() {
 	}
 
 	// modal slider
-		// left btn
-			// left btn disabled
-			if (index < 1) {
-				modalLeftBtnElem.disabled = true
-			} else {
-				modalLeftBtnElem.disabled = false
-			}
+	//		left btn
+	//				left btn disabled
+	if (index < 1) {
+		modalLeftBtnElem.disabled = true
+	} else {
+		modalLeftBtnElem.disabled = false
+	}
 	// left btn
 	modalLeftBtnElem.addEventListener('click', function () {
 		if (index > 0) {
@@ -98,7 +98,6 @@ function CloseMenu () {
 	modalElem.classList.remove('displayFlex')
 	for (var i = 0; i < modalImgElem.length; i++) {
 		modalImgElem[i].style.display = 'none'
-		html.style.overflowY = 'scroll'
 	}
 	for (var i = 0; i < section.length; i++) {
 		section[i].style.filter = 'blur(0)'
@@ -117,15 +116,15 @@ window.addEventListener("orientationchange", function() {
 
 
 // MEDIA
-	// footer link for mobile
-	const viber = document.getElementById('viber')
-	const phone = document.getElementById('phone')
+//		footer link for mobile
+const viber = document.getElementById('viber')
+const phone = document.getElementById('phone')
 
-	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-		viber.removeAttribute('href')
-		viber.setAttribute('href', 'viber://add?number=+380969409698')
-		phone.setAttribute('href', 'tel:+380969409698')
-		phone.setAttribute('title', 'Позвонить сейчас')
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+	viber.removeAttribute('href')
+	viber.setAttribute('href', 'viber://add?number=380969409698')
+	phone.setAttribute('href', 'tel:+380969409698')
+	phone.setAttribute('title', 'Позвонить сейчас')
 	// modal mobile btn
 	modalLeftBtnElem.classList.add('modal-mobile-btn')
 	modalRightBtnElem.classList.add('modal-mobile-btn')
@@ -133,44 +132,44 @@ window.addEventListener("orientationchange", function() {
 
 
 // ANIMATION
-	// img load atimation
-	function loadImgAnimation() {
-		const images = document.querySelectorAll('.gellery__img');
-		let options = {
+//		img load atimation
+function loadImgAnimation() {
+	const images = document.querySelectorAll('.gellery__img');
+	let options = {
+		root: null,
+		rootMargin: '0px',
+		threshold: 0.3
+	}
+
+	if (window.matchMedia("(max-width: 525px)").matches) {
+		options = {
 			root: null,
-			rootMargin: '0px',
-			threshold: 0.3
+			rootMargin: '-80px 0px -80px 0px',
+			threshold: 0
 		}
+	}
 
-		if (window.matchMedia("(max-width: 525px)").matches) {
-			options = {
-				root: null,
-				rootMargin: '-80px 0px -80px 0px',
-				threshold: 0
+	function handleImg(myImg, observer) {
+		myImg.forEach(myImgSingle => {
+			if (myImgSingle.intersectionRatio > 0) {
+				loadImage(myImgSingle.target);
 			}
-		}
-
-		function handleImg(myImg, observer) {
-			myImg.forEach(myImgSingle => {
-				if (myImgSingle.intersectionRatio > 0) {
-					loadImage(myImgSingle.target);
-				}
-			})
-		}
-
-		function loadImage(image) {
-			image.classList.add('animated', 'bounceInUp', 'slow')
-			image.style.visibility = 'visible'
-		}
-
-		const observer = new IntersectionObserver(handleImg, options);
-
-		images.forEach(img => {
-			observer.observe(img)
 		})
 	}
 
-	loadImgAnimation()
+	function loadImage(image) {
+		image.classList.add('animated', 'bounceInUp', 'slow')
+		image.style.visibility = 'visible'
+	}
+
+	const observer = new IntersectionObserver(handleImg, options);
+
+	images.forEach(img => {
+		observer.observe(img)
+	})
+}
+
+loadImgAnimation()
 
 
 // Load about text
@@ -180,7 +179,7 @@ function loadAboutText() {
 	const options = {
 		root: null,
 		rootMargin: '0px 0px -100px 0px',
-		threshold: 0.1
+		threshold: 0
 	}
 
 	function handleImg(myImg, observer) {
@@ -272,12 +271,24 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 	}
 }
 
+// first & last img is in focus
+function firstLastImg() {
+	if(gelleryImgElem[1].classList.contains('Focus') === true || gelleryImgElem[gelleryImgElem.length - 1].classList.contains('Focus') === true) {
+		gelleryImgElem[0].classList.add('noFocus')
+		gelleryImgElem[gelleryImgElem.length - 2].classList.add('noFocus')
+	} else {
+		gelleryImgElem[0].classList.remove('noFocus')
+		gelleryImgElem[gelleryImgElem.length - 2].classList.remove('noFocus')
+	}
+}
+
+firstLastImg()
 
 // Focus img that in the middel of screen
 if (window.matchMedia("(max-width: 686px)").matches) {
 	const targets = document.querySelectorAll('.gellery__img')
 
-	// all img is noFocus
+	// firstly - all img is noFocus
 	for (var i = 0; i < targets.length; i++) {
 		targets[i].classList.add('noFocus')
 	}
@@ -291,15 +302,18 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 		}
 
 		// the event when img in the middel of screen
-		var callback = function(entries, observer) { 
+		var callback = function(entries, observer) {
 			entries.forEach(entry => {
 				if (entry.isIntersecting == true) {
 					const img = entry.target
+					img.classList.add('Focus')
 					img.classList.remove('noFocus')
 				} else if (entry.isIntersecting == false) {
 					const img = entry.target
+					img.classList.remove('Focus')
 					img.classList.add('noFocus')
 				}
+				firstLastImg()
 			});
 		};
 		var observer = new IntersectionObserver(callback, options);
