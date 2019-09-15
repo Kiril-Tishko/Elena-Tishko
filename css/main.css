@@ -48,6 +48,13 @@ a {
   color: #fff6eb;
 }
 
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -256,6 +263,8 @@ a {
 }
 
 .gellery__img {
+  min-height: 150px;
+  min-width: 150px;
   visibility: hidden;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;

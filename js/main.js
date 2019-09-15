@@ -15,6 +15,9 @@ var handler = function() {
 	// modall is visible
 	modalElem.classList.add('displayFlex')
 	modalImgElem[index].style.display = 'block'
+	const img = modalImgElem[index]
+	// const src = img.getAttribute('data-lazy')
+	// img.setAttribute('src', src);
 	// blocking scroll for mobile
 	function myPrevDef(e){
 		e.preventDefault();
@@ -38,8 +41,9 @@ var handler = function() {
 	} else {
 		modalLeftBtnElem.disabled = false
 	}
+
 	// left btn
-	modalLeftBtnElem.addEventListener('click', function () {
+	function leftSlide () {
 		if (index > 0) {
 			// hide all img
 			for (var i = 0; i < modalImgElem.length; i++) {
@@ -58,7 +62,7 @@ var handler = function() {
 				modalLeftBtnElem.disabled = false
 			}
 		}
-	})
+	}
 
 	// disabled right btn (by _clicking_ on the last picture)
 	if (index >= modalImgElem.length - 1) {
@@ -68,7 +72,7 @@ var handler = function() {
 	}
 
 	// right btn
-	modalRightBtnElem.addEventListener('click', function () {
+	function rightSlide () {
 		if (index < modalImgElem.length - 1) {
 			// hide all img
 			for (var i = 0; i < modalImgElem.length; i++) {
@@ -87,7 +91,45 @@ var handler = function() {
 				modalRightBtnElem.disabled = false
 			}
 		}
-	})
+	}
+
+	// slide img by keydown
+	function keydownSlide() {
+		if (event.keyCode === 37) {leftSlide() }
+		if (event.keyCode === 39) {rightSlide() }
+	}
+
+	// close menu btn
+	function CloseMenu () {
+		modalElem.classList.remove('displayFlex')
+		for (var i = 0; i < modalImgElem.length; i++) {
+			modalImgElem[i].style.display = 'none'
+		}
+		for (var i = 0; i < section.length; i++) {
+			section[i].style.filter = 'blur(0)'
+		}
+		// allow to scroll
+		window.removeEventListener('touchmove', myPrevDef, {passive: false});
+	}
+
+	// close modal by screen rotate
+	window.addEventListener("orientationchange", function() {
+		if (window.orientation = 90) {
+			CloseMenu()
+		}
+	}, false);
+
+	// close modal by keydown(Esc)
+	function keydownCloseMenu() {
+		if (event.keyCode === 27) { CloseMenu() }
+	}
+
+	// assign a function to the enent
+	modalRightBtnElem.addEventListener('click', rightSlide)
+	modalLeftBtnElem.addEventListener('click', leftSlide)
+	modalCloseBtnElem.addEventListener('click', CloseMenu)
+	window.addEventListener('keydown', keydownSlide)
+	window.addEventListener('keydown', keydownCloseMenu)
 }
 
 // aplay function by click on img
@@ -96,28 +138,6 @@ for (var i = 0; i < gelleryImgElem.length; i++) {
 	gelleryImgElem[i].onclick = handler
 }
 
-// close menu btn
-function CloseMenu () {
-	modalElem.classList.remove('displayFlex')
-	for (var i = 0; i < modalImgElem.length; i++) {
-		modalImgElem[i].style.display = 'none'
-	}
-	for (var i = 0; i < section.length; i++) {
-		section[i].style.filter = 'blur(0)'
-	}
-	// // allow to scroll
-	window.removeEventListener('touchmove', myPrevDef, {passive: false});
-	// window.addEventListener('touchmove', function () {console.log(1)});
-}
-
-modalCloseBtnElem.addEventListener('click', CloseMenu)
-
-// close modal by screen rotate
-window.addEventListener("orientationchange", function() {
-	if (window.orientation = 90) {
-		CloseMenu()
-	}
-}, false);
 
 
 
@@ -135,6 +155,61 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 	modalLeftBtnElem.classList.add('modal-mobile-btn')
 	modalRightBtnElem.classList.add('modal-mobile-btn')
 }
+
+
+// Focus img that in the middel of screen
+if (window.matchMedia("(max-width: 686px)").matches) {
+	const targets = document.querySelectorAll('.gellery__img')
+
+	// firstly - all img is noFocus
+	for (var i = 0; i < targets.length; i++) {
+		targets[i].classList.add('noFocus')
+	}
+
+	const lazyLoad = target => {
+		// load options
+		var options = {
+			root: null,
+			rootMargin: '-50% 0px -50% 0px',
+			threshold: 0
+		}
+
+		// the event when img in the middel of screen
+		var callback = function(entries, observer) {
+			entries.forEach(entry => {
+				if (entry.isIntersecting == true) {
+					const img = entry.target
+					img.classList.add('Focus')
+					img.classList.remove('noFocus')
+				} else if (entry.isIntersecting == false) {
+					const img = entry.target
+					img.classList.remove('Focus')
+					img.classList.add('noFocus')
+				}
+				firstLastImg()
+			});
+		};
+		var observer = new IntersectionObserver(callback, options);
+		observer.observe(target)
+	};
+
+	targets.forEach(lazyLoad)
+}
+
+// first & last img is in focus
+function firstLastImg() {
+	if(gelleryImgElem[1].classList.contains('Focus') === true || gelleryImgElem[gelleryImgElem.length - 1].classList.contains('Focus') === true) {
+		gelleryImgElem[0].classList.add('noFocus')
+		gelleryImgElem[gelleryImgElem.length - 2].classList.add('noFocus')
+	} else {
+		gelleryImgElem[0].classList.remove('noFocus')
+		gelleryImgElem[gelleryImgElem.length - 2].classList.remove('noFocus')
+	}
+}
+
+firstLastImg()
+
+
 
 
 // ANIMATION
@@ -213,7 +288,6 @@ function loadAboutText() {
 loadAboutText()
 
 
-
 // Scroll effect
 function Scroll() {
 	let positionY = window.pageYOffset
@@ -239,11 +313,43 @@ function Scroll() {
 window.addEventListener('scroll', Scroll)
 
 
+// Optimize img load
+// const targets = document.querySelectorAll('.gellery__img');
 
-// execute function only 1 time
+// const lazyLoad = target => {
+// 	var options = {
+// 		root: null,
+// 		rootMargin: '400px 0px 70px 0px',
+// 		threshold: 0
+// 	}
+
+// 	var callback = function(entries, observer) { 
+// 		entries.forEach(entry => {
+// 			if (entry.isIntersecting) {
+// 				// console.log('😍');
+// 				const img = entry.target;
+// 				const src = img.getAttribute('data-lazy');
+
+// 				img.setAttribute('src', src);
+
+// 				observer.disconnect();
+// 			}
+// 		});
+// 	};
+// 	var observer = new IntersectionObserver(callback, options);
+// 	observer.observe(target)
+// };
+
+// targets.forEach(lazyLoad);
+
+
+
+
+// PLUGIN
+// 	Typed.js
+// 		execute function only 1 time
 var firstTime = false;
 
-// Typed.js
 function typeText() {
 	if(!firstTime) {
 		jQuery(document).ready(function () {
@@ -275,56 +381,4 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 			firstTime = true
 		}
 	}
-}
-
-// first & last img is in focus
-function firstLastImg() {
-	if(gelleryImgElem[1].classList.contains('Focus') === true || gelleryImgElem[gelleryImgElem.length - 1].classList.contains('Focus') === true) {
-		gelleryImgElem[0].classList.add('noFocus')
-		gelleryImgElem[gelleryImgElem.length - 2].classList.add('noFocus')
-	} else {
-		gelleryImgElem[0].classList.remove('noFocus')
-		gelleryImgElem[gelleryImgElem.length - 2].classList.remove('noFocus')
-	}
-}
-
-firstLastImg()
-
-// Focus img that in the middel of screen
-if (window.matchMedia("(max-width: 686px)").matches) {
-	const targets = document.querySelectorAll('.gellery__img')
-
-	// firstly - all img is noFocus
-	for (var i = 0; i < targets.length; i++) {
-		targets[i].classList.add('noFocus')
-	}
-
-	const lazyLoad = target => {
-		// load options
-		var options = {
-			root: null,
-			rootMargin: '-50% 0px -50% 0px',
-			threshold: 0
-		}
-
-		// the event when img in the middel of screen
-		var callback = function(entries, observer) {
-			entries.forEach(entry => {
-				if (entry.isIntersecting == true) {
-					const img = entry.target
-					img.classList.add('Focus')
-					img.classList.remove('noFocus')
-				} else if (entry.isIntersecting == false) {
-					const img = entry.target
-					img.classList.remove('Focus')
-					img.classList.add('noFocus')
-				}
-				firstLastImg()
-			});
-		};
-		var observer = new IntersectionObserver(callback, options);
-		observer.observe(target)
-	};
-
-	targets.forEach(lazyLoad)
 }
