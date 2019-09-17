@@ -8,6 +8,13 @@ const modalCloseBtnElem = document.getElementById('modal-close-btn')
 const modalLeftBtnElem = document.getElementById('modal-left-btn')
 const modalRightBtnElem = document.getElementById('modal-right-btn')
 
+// if (window.matchMedia("(min-width: 686px)").matches) {
+// 	for (var i = 0; i < modalImgElem.length; i++) {
+// 		const src = modalImgElem[i].getAttribute('data-lazy')
+// 		modalImgElem[i].setAttribute('src', src);
+// 	}
+// }
+
 // show modal
 var handler = function() {
 	// clicked img
@@ -16,11 +23,11 @@ var handler = function() {
 	modalElem.classList.add('displayFlex')
 	modalImgElem[index].style.display = 'block'
 	const img = modalImgElem[index]
-	// const src = img.getAttribute('data-lazy')
-	// img.setAttribute('src', src);
 	// blocking scroll for mobile
-	function myPrevDef(e){
-		e.preventDefault();
+	if (window.matchMedia("(min-width: 525px)").matches) {
+		function myPrevDef(e){
+			e.preventDefault();
+		}
 	}
 	window.myPrevDef = myPrevDef;
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {

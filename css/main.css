@@ -4,7 +4,7 @@
 }
 
 html {
-  background: #1d1d1d;
+  background: #fff6eb;
   overflow-x: hidden;
 }
 
@@ -263,8 +263,8 @@ img {
 }
 
 .gellery__img {
-  min-height: 150px;
-  min-width: 150px;
+  /*min-height: 150px;
+  min-width: 150px;*/
   visibility: hidden;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
