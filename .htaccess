@@ -87,4 +87,4 @@ AddType application/octet-stream .doc .mov .avi .pdf .xls
 </ifModule>
 
 # Not found
-ErrorDocument 404 /404.html
+
