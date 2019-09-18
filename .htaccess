@@ -83,8 +83,8 @@ AddType application/octet-stream .doc .mov .avi .pdf .xls
     #кэшировать xml файлы на десять минут
     ExpiresByType application/xhtml+xml "access plus 600 seconds"
 
-    Access-Control-Max-Age: 86400
+    Max-Age: 86400
 </ifModule>
 
 # Not found
-ErrorDocument 404 /404.htm
+ErrorDocument 404 /404.html
