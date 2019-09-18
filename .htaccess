@@ -83,7 +83,7 @@ AddType application/octet-stream .doc .mov .avi .pdf .xls
     #кэшировать xml файлы на десять минут
     ExpiresByType application/xhtml+xml "access plus 600 seconds"
 
-    Max-Age: 86400
+    ваыаыфыафывафывафыафыаыва
 </ifModule>
 
 # Not found
