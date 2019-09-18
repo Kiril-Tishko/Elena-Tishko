@@ -82,4 +82,6 @@ AddType application/octet-stream .doc .mov .avi .pdf .xls
     ExpiresByType text/html "access plus 43200 seconds"
     #кэшировать xml файлы на десять минут
     ExpiresByType application/xhtml+xml "access plus 600 seconds"
+
+     Header set Cache-Control "max-age=43200"
 </ifModule>
