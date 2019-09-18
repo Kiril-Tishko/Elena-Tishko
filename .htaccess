@@ -2,4 +2,7 @@
     ExpiresActive On
     ExpiresDefault "access plus 1 month"
     ExpiresByType image/jpeg "access plus 2 months"
+
+    INVALID LINE HERE
+    
 </IfModule>
