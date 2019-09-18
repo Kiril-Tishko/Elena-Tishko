@@ -3,7 +3,7 @@ Options All -ExecCGI -Indexes -Includes +FollowSymLinks
 <ifModule mod_expires.c>
     ExpiresActive On
     #по умолчанию кеш в 5 секунд
-    ExpiresDefault "access plus 700 seconds"
+    ExpiresDefault "access plus 1200 seconds"
     #кэшировать флэш и изображения на месяц
     ExpiresByType image/x-icon "access plus 2592000 seconds"
     ExpiresByType image/jpeg "access plus 2592000 seconds"
