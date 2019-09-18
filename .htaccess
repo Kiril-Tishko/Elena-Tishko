@@ -11,7 +11,7 @@ Options All -ExecCGI -Indexes -Includes +FollowSymLinks
     </FilesMatch>
     #кэшировать флэш и изображения на месяц
     <FilesMatch "\.(flv|swf|ico|gif|jpg|jpeg|png)$">
-        Header set Cache-Control "max-age=2592000"
+        Cache-Control "max-age=2592000"
     </FilesMatch>
     #отключить кэширование
     <FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
