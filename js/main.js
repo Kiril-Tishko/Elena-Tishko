@@ -8,12 +8,6 @@ const modalCloseBtnElem = document.getElementById('modal-close-btn')
 const modalLeftBtnElem = document.getElementById('modal-left-btn')
 const modalRightBtnElem = document.getElementById('modal-right-btn')
 
-// if (window.matchMedia("(min-width: 686px)").matches) {
-// 	for (var i = 0; i < modalImgElem.length; i++) {
-// 		const src = modalImgElem[i].getAttribute('data-lazy')
-// 		modalImgElem[i].setAttribute('src', src);
-// 	}
-// }
 
 // show modal
 var handler = function() {
@@ -162,6 +156,57 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 	modalLeftBtnElem.classList.add('modal-mobile-btn')
 	modalRightBtnElem.classList.add('modal-mobile-btn')
 }
+
+
+// Mobile lazy load
+//		delate lazy load on PC
+if (window.matchMedia("(min-width: 525px)").matches) {
+	for (var i = 0; i < gelleryImgElem.length; i++) {
+		const src = gelleryImgElem[i].getAttribute('data-lazy')
+		gelleryImgElem[i].setAttribute('src', src);
+		modalImgElem[i].setAttribute('src', src);
+	}
+}
+
+// lazy load
+const targets = document.querySelectorAll('.gellery__img');
+
+const lazyLoad = target => {
+	var options = {
+		root: null,
+		rootMargin: '200px 0px 200px 0px',
+		threshold: 0
+	}
+
+	var callback = function(entries, observer) { 
+		entries.forEach(entry => {
+
+			if (entry.isIntersecting) {
+				const img = entry.target;
+				const src = img.getAttribute('data-lazy');
+
+				img.setAttribute('src', src);
+				img.classList.add('animated', 'fadeInRight');
+
+				observer.disconnect();
+			}
+		});
+	};
+	var observer = new IntersectionObserver(callback, options);
+	observer.observe(target)
+};
+
+targets.forEach(lazyLoad);
+
+// load modal img by screen rotate to horizontal
+window.addEventListener("orientationchange", function() {
+	if (window.orientation = 90) {
+		for (var i = 0; i < gelleryImgElem.length; i++) {
+			const src = gelleryImgElem[i].getAttribute('data-lazy')
+			modalImgElem[i].setAttribute('src', src);
+		}
+	}
+}, false);
 
 
 // Focus img that in the middel of screen
