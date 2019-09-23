@@ -7,12 +7,12 @@
   "icons": [
     {
       "src": "../img/favicon19x19.png",
-      "sizes": "16x16",
+      "sizes": "19x19",
       "type": "image/png"
     },
     {
       "src": "../img/favicon64x64.png",
-      "sizes": "72x72",
+      "sizes": "64x64",
       "type": "image/png"
     }
   ],
