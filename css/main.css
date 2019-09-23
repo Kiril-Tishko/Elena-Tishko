@@ -369,7 +369,9 @@
 
 .modal-close-btn {
   width: 5vw;
+  max-width: 50px
   height: 5vw;
+  min-height: 50px;
   top: 5px;
   right: 0;
   margin: 0;
@@ -406,6 +408,8 @@
 
 .modal-left-btn svg,
 .modal-right-btn svg {
+  max-width: 50px;
+  max-height: 50px;
   position: absolute;
   -webkit-transform: translate(0%, -50%);
       -ms-transform: translate(0%, -50%);
@@ -621,6 +625,12 @@
   fill: #ad7835;
 }
 
+.viber g rect {
+  fill:#E5E5E5;
+  width: 11.916px;
+  height: 0.002px;
+}
+
 /*whatsapp*/
 .whatsapp-icon__phone {
   fill: #1d1d1d;
@@ -636,36 +646,8 @@
 
 
 
-/* --------------------------------------  MEDIA-------------------------------------- */
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 460px) {
-  body {
-    -webkit-background-size: 240% 240%;
-    background-size: 240%;
-  }
-
-  .about__title {
-    width: auto;
-    text-align: center;
-  }
-
-  .about__title:before {
-    content: none;
-  }
-}
-
-
-
 /* ANIMATION */
+/*    animation style from animate.css*/
 @media (max-width: 525px) {
   @-webkit-keyframes bounceInUp {
     from,

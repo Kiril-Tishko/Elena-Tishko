@@ -39,6 +39,14 @@ body {
   }
 }
 
+@media (max-width: 460px) {
+  body {
+    -webkit-background-size: 240% 240%;
+    background-size: 240%;
+  }
+}
+
+
 section {
   -webkit-transition: -webkit-filter  0.25s;
   transition: -webkit-filter  0.25s;
@@ -213,6 +221,7 @@ img {
 .about__title {
   width: 467px;
   margin: 0 auto;
+  animation-delay: 0.1s;
 }
 
 @media (max-width: 734px) {
@@ -221,6 +230,18 @@ img {
     margin: 0 auto;
   }
 }
+
+@media (max-width: 460px) {
+  .about__title {
+    width: auto;
+    text-align: center;
+  }
+
+  .about__title:before {
+    content: none;
+  }
+}
+
 
 .about__article {
   display: -webkit-box;
