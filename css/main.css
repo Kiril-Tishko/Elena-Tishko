@@ -382,7 +382,7 @@
 .modal-btn:disabled,
 .modal-btn:disabled svg {
   cursor: default;
-  fill: #333;
+  fill: #1a1a1a;
 }
 
 .modal-close-btn {

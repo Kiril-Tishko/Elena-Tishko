@@ -387,30 +387,11 @@ function typeText() {
 		jQuery(document).ready(function () {
 			var typed = new Typed('#typed', {
 				stringsElement: '#typed-strings',
-				typeSpeed: 6,
-				backSpeed: 10,
+				typeSpeed: 3,
 				startDelay: 1500,
 				showCursor: false
 			})
 		})
 		firstTime = true
-	}
-}
-
-
-if (window.matchMedia("(max-width: 686px)").matches) {
-	function typeText() {
-		if(!firstTime) {
-			jQuery(document).ready(function () {
-				var typed = new Typed('#typed', {
-					stringsElement: '#typed-strings',
-					typeSpeed: 6,
-					backSpeed: 8,
-					startDelay: 300,
-					showCursor: false
-				})
-			})
-			firstTime = true
-		}
 	}
 }
