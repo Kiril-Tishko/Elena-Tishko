@@ -403,7 +403,7 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 			jQuery(document).ready(function () {
 				var typed = new Typed('#typed', {
 					stringsElement: '#typed-strings',
-					typeSpeed: 2,
+					typeSpeed: 4,
 					startDelay: 300,
 					showCursor: false
 				})
