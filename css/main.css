@@ -1,3 +1,72 @@
+*, *before, *after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(../img/background.jpg) repeat-y center center / contain, #1d1d1d;
+}
+
+@media (max-width: 525px) {
+  section {
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
+}
+
+a {
+  color: #fff6eb;
+}
+
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+section {
+  -webkit-transition: -webkit-filter  0.25s;
+  transition: -webkit-filter  0.25s;
+  -o-transition: filter   0.25s;
+  -o-transition: filter  0.25s;
+  transition: filter  0.25s;
+  transition: filter  0.25s, -webkit-filter  0.25s;
+  transition: filter  0.25s, -webkit-filter   0.25s;
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 60px;
+  height: 2px;
+  background: #ad7835;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1d1d1d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/*  HEADER  */
+.header__avatar {
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,1,0.50);
+  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.50);
+}
+
 /*  GALLERY */
 /*.gallery {
   margin-top: 120px;
@@ -751,9 +820,7 @@
   visibility: hidden;
 }
 
-.display-none {
-  display: none;
-}
+.display-none{display: none;}
 
 .visible {
   visibility: visible;

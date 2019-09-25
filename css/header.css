@@ -1,31 +1,11 @@
-    *, *before, *after {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 html {
   background: #1d1d1d;
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-  width: 7px;
-}
-
-::-webkit-scrollbar-track {
-  background: #1d1d1d;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-}
-
 body {
   margin: 0;
   padding: 0;
-  background: url(img/background.jpg) repeat-y center center / contain, #1d1d1d;
   font-family: 'Droid Serif';
   color: #fff6eb;
   zoom: 0.9;
@@ -46,35 +26,6 @@ body {
   }
 }
 
-
-section {
-  -webkit-transition: -webkit-filter  0.25s;
-  transition: -webkit-filter  0.25s;
-  -o-transition: filter   0.25s;
-  -o-transition: filter  0.25s;
-  transition: filter  0.25s;
-  transition: filter  0.25s, -webkit-filter  0.25s;
-  transition: filter  0.25s, -webkit-filter   0.25s;
-}
-
-@media (max-width: 525px) {
-  section {
-    -webkit-filter: none !important;
-    filter: none !important;
-  }
-}
-
-a {
-  color: #fff6eb;
-}
-
-img {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -87,16 +38,6 @@ img {
   font-weight: normal;
   color: #ad7835;
   margin: 0;
-}
-
-.title::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 60px;
-  height: 2px;
-  background: #ad7835;
 }
 
 
@@ -141,6 +82,12 @@ img {
   border-radius: 3px;
 }
 
+@media (min-width: 690px) {
+  .header__block {
+    opacity: 0;
+  }
+}
+
 @media (max-width: 690px) {
   .header__block {
     -webkit-box-orient: vertical;
@@ -176,7 +123,6 @@ img {
     width: auto;
     margin-top: 40px;
     margin-bottom: 0;
-    padding: 0 5px;
     text-align: center;
   }
 }
@@ -184,15 +130,22 @@ img {
 .wrapper-img {
   width: 302px;
   margin-left: auto;
+  background: #2a2a2a;
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
 
-.wrapper-img img {
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.50);
-  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.50);
+@media (min-width: 690px) {
+  .wrapper-img {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 690px) {
+  .wrapper-img {
+    min-height: 364.2px;
+    margin-top: 30px;
+  }
 }
 
 .header__avatar {
@@ -203,9 +156,10 @@ img {
 @media (max-width: 690px) {
   .header__avatar {
     margin: 0;
-    margin-top: 30px;
   }
 }
+
+
 
 /*  ABOUT */
 .about {
@@ -224,6 +178,12 @@ img {
   animation-delay: 0.1s;
 }
 
+@media (min-width: 690px) {
+  .about__title {
+    opacity: 0;
+  }
+}
+
 @media (max-width: 734px) {
   .about__title {
     width: 470px;
@@ -238,63 +198,8 @@ img {
   }
 
   .about__title:before {
-    content: none;
+    content: none !important;
   }
-}
-
-
-.about__article {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin-top: 24px;
-}
-
-@media (max-width: 734px) {
-  .about__article {
-    display: none;
-  }
-}
-
-.article__wrapp {
-  width: 190px;
-  margin: 36px;
-  position: relative;
-}
-
-.article__wrapp:before {
-  content: '';
-  width: 190px;
-  height: 130px;
-  position: absolute;
-  top: -15px;
-  left: -15px;
-  background: #313131;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-}
-
-.article__wrapp:nth-child(1):before {
-  height: 140px;
-}
-
-.article__wrapp:nth-child(2) {
-  margin-top: 76px;
-}
-
-.about__article img {
-  width: 100%;
-  z-index: 2;
-  position: relative;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.50);
-  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.50);
 }
 
 .about__text {
@@ -319,6 +224,12 @@ img {
   box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.30);
 }
 
+@media (min-width: 690px) {
+  .about__text {
+    opacity: 0;
+  }
+}
+
 @media (max-width: 734px) {
   .about__text {
     margin-top: 40px;
@@ -334,7 +245,6 @@ img {
   background: #724b19;
 }
 
-
 .about__text p {
   min-height: 30px;
   margin: 0;
@@ -343,6 +253,7 @@ img {
   padding-left: 46px;
   padding-right: 25px;
 }
+
 
 
 /*  GALLERY */
@@ -362,6 +273,7 @@ img {
   min-height: 150px;
   min-width: 150px;
  }
+
 
 
 /*  ANIMATION */
@@ -429,4 +341,16 @@ img {
 .fadeInRight {
   -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight;
+}
+
+.animated.slow {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+
+
+/*Service classes*/
+.display-none {
+  display: none;
 }

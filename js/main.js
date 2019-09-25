@@ -185,7 +185,7 @@ if (window.matchMedia("(max-width: 525px)").matches) {
 	const lazyLoad = target => {
 		var options = {
 			root: null,
-			rootMargin: '200px 0px 200px 0px',
+			rootMargin: '250px 0px 250px 0px',
 			threshold: 0
 		}
 
