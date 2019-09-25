@@ -388,7 +388,7 @@ function typeText() {
 			var typed = new Typed('#typed', {
 				stringsElement: '#typed-strings',
 				typeSpeed: 2,
-				startDelay: 1500,
+				startDelay: 700,
 				showCursor: false
 			})
 		})
@@ -403,7 +403,7 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 			jQuery(document).ready(function () {
 				var typed = new Typed('#typed', {
 					stringsElement: '#typed-strings',
-					typeSpeed: 4,
+					typeSpeed: 1,
 					startDelay: 300,
 					showCursor: false
 				})
