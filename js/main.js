@@ -1,9 +1,10 @@
 // MODAL
 const modalElem = document.getElementById('modal')
 const html = document.getElementsByTagName('html')[0]
-let section = document.getElementsByTagName('section')
-let gelleryImgElem = document.getElementsByClassName('gellery__img')
-let modalImgElem = document.getElementsByClassName('modal__img')
+const section = document.getElementsByTagName('section')
+const gelleryImgWrapElem = document.querySelectorAll('.gellery__img-wrap')
+const gelleryImgElem = document.getElementsByClassName('gellery__img')
+const modalImgElem = document.getElementsByClassName('modal__img')
 const modalCloseBtnElem = document.getElementById('modal-close-btn')
 const modalLeftBtnElem = document.getElementById('modal-left-btn')
 const modalRightBtnElem = document.getElementById('modal-right-btn')
@@ -16,7 +17,7 @@ var handler = function() {
 	// modall is visible
 	modalElem.classList.add('displayFlex')
 	modalImgElem[index].style.display = 'block'
-	const img = modalImgElem[index]
+	// const img = modalImgElem[index]
 	// blocking scroll for mobile
 	if (window.matchMedia("(min-width: 525px)").matches) {
 		function myPrevDef(e){
@@ -159,57 +160,68 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 
 
 // Mobile lazy load
-//		delate lazy load on PC
-if (window.matchMedia("(min-width: 525px)").matches) {
+//		delate (main part) action lazy load on PC
+function justLoadAllImg() {
 	for (var i = 0; i < gelleryImgElem.length; i++) {
-		const src = gelleryImgElem[i].getAttribute('data-lazy')
-		gelleryImgElem[i].setAttribute('src', src);
-		modalImgElem[i].setAttribute('src', src);
+		let srcGellery = gelleryImgElem[i].getAttribute('src')
+		let srcModal = modalImgElem[i].getAttribute('data-lazy')
+		// delete '-thumbnail' from src
+		srcGellery = srcGellery.replace('-thumbnail', '')
+		// set atribute
+		gelleryImgElem[i].setAttribute('src', srcGellery)
+		modalImgElem[i].setAttribute('src', srcModal)
 	}
 }
 
-// lazy load
-const targets = document.querySelectorAll('.gellery__img');
+if (window.matchMedia("(min-width: 525px)").matches) {
+	justLoadAllImg()
+}
 
-const lazyLoad = target => {
-	var options = {
-		root: null,
-		rootMargin: '200px 0px 200px 0px',
-		threshold: 0
-	}
 
-	var callback = function(entries, observer) { 
-		entries.forEach(entry => {
+// lazy load on mobile
+if (window.matchMedia("(max-width: 525px)").matches) {
+	const targets = document.querySelectorAll('.gellery__img');
 
-			if (entry.isIntersecting) {
-				const img = entry.target;
-				const src = img.getAttribute('data-lazy');
+	const lazyLoad = target => {
+		var options = {
+			root: null,
+			rootMargin: '100px 0px 100px 0px',
+			threshold: 0
+		}
 
-				img.setAttribute('src', src);
-				observer.disconnect();
-			}
-		});
+		var callback = function(entries, observer) { 
+			entries.forEach(entry => {
+
+				if (entry.isIntersecting) {
+					const img = entry.target;
+					let src = img.getAttribute('src');
+
+					// delete '-thumbnail' from src
+					src = src.replace('-thumbnail', '')
+
+					img.setAttribute('src', src);
+					observer.disconnect();
+				}
+			});
+		};
+		var observer = new IntersectionObserver(callback, options);
+		observer.observe(target)
 	};
-	var observer = new IntersectionObserver(callback, options);
-	observer.observe(target)
-};
 
-targets.forEach(lazyLoad);
+	targets.forEach(lazyLoad);
+}
 
 // load modal img by screen rotate to horizontal
 window.addEventListener("orientationchange", function() {
 	if (window.orientation = 90) {
-		for (var i = 0; i < gelleryImgElem.length; i++) {
-			const src = gelleryImgElem[i].getAttribute('data-lazy')
-			modalImgElem[i].setAttribute('src', src);
-		}
+		justLoadAllImg()
 	}
 }, false);
 
 
 // Focus img that in the middel of screen
 if (window.matchMedia("(max-width: 686px)").matches) {
-	const targets = document.querySelectorAll('.gellery__img')
+	const targets = document.querySelectorAll('.gellery__img-wrap')
 
 	// firstly - all img is noFocus
 	for (var i = 0; i < targets.length; i++) {
@@ -248,12 +260,12 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 
 // first & last img is in focus
 function firstLastImg() {
-	if(gelleryImgElem[1].classList.contains('Focus') === true || gelleryImgElem[gelleryImgElem.length - 1].classList.contains('Focus') === true) {
-		gelleryImgElem[0].classList.add('noFocus')
-		gelleryImgElem[gelleryImgElem.length - 2].classList.add('noFocus')
+	if(gelleryImgWrapElem[1].classList.contains('Focus') === true || gelleryImgWrapElem[gelleryImgWrapElem.length - 1].classList.contains('Focus') === true) {
+		gelleryImgWrapElem[0].classList.add('noFocus')
+		gelleryImgWrapElem[gelleryImgWrapElem.length - 2].classList.add('noFocus')
 	} else {
-		gelleryImgElem[0].classList.remove('noFocus')
-		gelleryImgElem[gelleryImgElem.length - 2].classList.remove('noFocus')
+		gelleryImgWrapElem[0].classList.remove('noFocus')
+		gelleryImgWrapElem[gelleryImgWrapElem.length - 2].classList.remove('noFocus')
 	}
 }
 
@@ -361,36 +373,6 @@ function Scroll() {
 }
 
 window.addEventListener('scroll', Scroll)
-
-
-// Optimize img load
-// const targets = document.querySelectorAll('.gellery__img');
-
-// const lazyLoad = target => {
-// 	var options = {
-// 		root: null,
-// 		rootMargin: '400px 0px 70px 0px',
-// 		threshold: 0
-// 	}
-
-// 	var callback = function(entries, observer) { 
-// 		entries.forEach(entry => {
-// 			if (entry.isIntersecting) {
-// 				// console.log('😍');
-// 				const img = entry.target;
-// 				const src = img.getAttribute('data-lazy');
-
-// 				img.setAttribute('src', src);
-
-// 				observer.disconnect();
-// 			}
-// 		});
-// 	};
-// 	var observer = new IntersectionObserver(callback, options);
-// 	observer.observe(target)
-// };
-
-// targets.forEach(lazyLoad);
 
 
 
