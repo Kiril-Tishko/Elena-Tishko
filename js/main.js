@@ -17,7 +17,6 @@ var handler = function() {
 	// modall is visible
 	modalElem.classList.add('displayFlex')
 	modalImgElem[index].style.display = 'block'
-	// const img = modalImgElem[index]
 	// blocking scroll for mobile
 	if (window.matchMedia("(min-width: 525px)").matches) {
 		function myPrevDef(e){
@@ -31,7 +30,7 @@ var handler = function() {
 	// modal animatin
 	modalImgElem[index].classList.add('animated', 'zoomIn')
 	// background blur
-	for (var i = 0; i < section.length; i++) {
+	for (var i = section.length; i--;) {
 		section[i].style.filter = 'blur(4.5px)'
 	}
 
@@ -48,7 +47,7 @@ var handler = function() {
 	function leftSlide () {
 		if (index > 0) {
 			// hide all img
-			for (var i = 0, len = modalImgElem.length; i < len; i++) {
+			for (var i = modalImgElem.length; i--;) {
 				modalImgElem[i].style.display = 'none'
 				modalImgElem[i].classList.remove('animated', 'zoomIn')
 			}
@@ -77,7 +76,7 @@ var handler = function() {
 	function rightSlide () {
 		if (index < modalImgElem.length - 1) {
 			// hide all img
-			for (var i = 0, len = modalImgElem.length; i < len; i++) {
+			for (var i = modalImgElem.length; i--;) {
 				modalImgElem[i].style.display = 'none'
 				modalImgElem[i].classList.remove('animated', 'zoomIn')
 			}
@@ -104,10 +103,10 @@ var handler = function() {
 	// close menu btn
 	function CloseMenu () {
 		modalElem.classList.remove('displayFlex')
-		for (var i = 0, len = modalImgElem.length; i < len; i++) {
+		for (var i = modalImgElem.length; i--;) {
 			modalImgElem[i].style.display = 'none'
 		}
-		for (var i = 0, len = section.length; i < len; i++) {
+		for (var i = section.length; i--;) {
 			section[i].style.filter = 'blur(0)'
 		}
 		// allow to scroll
@@ -135,7 +134,7 @@ var handler = function() {
 }
 
 // aplay function by click on img
-for (var i = 0, len = gelleryImgElem.length; i < len; i++) {
+for (var i = gelleryImgElem.length; i--;) {
 	gelleryImgElem[i].setAttribute('data-index', i)
 	gelleryImgElem[i].onclick = handler
 }
@@ -162,7 +161,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 // Mobile lazy load
 //		delate (main part) action lazy load on PC
 function justLoadAllImg() {
-	for (var i = 0, len = gelleryImgElem.length; i < len; i++) {
+	for (var i = gelleryImgElem.length; i--;) {
 		let srcGellery = gelleryImgElem[i].getAttribute('src')
 		let srcModal = modalImgElem[i].getAttribute('data-lazy')
 		// delete '-thumbnail' from src
@@ -224,7 +223,7 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 	const targets = document.querySelectorAll('.gellery__img-wrap')
 
 	// firstly - all img is noFocus
-	for (var i = 0, len = targets.length; i < len; i++) {
+	for (var i = targets.length; i--;) {
 		targets[i].classList.add('noFocus')
 	}
 
@@ -365,7 +364,7 @@ function Scroll() {
 		let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom
 		if (windowRelativeBottom < document.documentElement.clientHeight + 60) {
 			const footerTitle = document.querySelectorAll('.footer .title')
-			for (var i = 0; i < footerTitle.length; i++) {
+			for (var i = footerTitle.length; i--;) {
 				footerTitle[i].classList.add('animated', 'swing', 'fast')
 			}
 		} break
