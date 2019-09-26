@@ -48,7 +48,7 @@ var handler = function() {
 	function leftSlide () {
 		if (index > 0) {
 			// hide all img
-			for (var i = 0; i < modalImgElem.length; i++) {
+			for (var i = 0, len = modalImgElem.length; i < len; i++) {
 				modalImgElem[i].style.display = 'none'
 				modalImgElem[i].classList.remove('animated', 'zoomIn')
 			}
@@ -77,7 +77,7 @@ var handler = function() {
 	function rightSlide () {
 		if (index < modalImgElem.length - 1) {
 			// hide all img
-			for (var i = 0; i < modalImgElem.length; i++) {
+			for (var i = 0, len = modalImgElem.length; i < len; i++) {
 				modalImgElem[i].style.display = 'none'
 				modalImgElem[i].classList.remove('animated', 'zoomIn')
 			}
@@ -86,7 +86,7 @@ var handler = function() {
 			modalImgElem[index].style.display = 'block'
 			// activate left btn
 			modalLeftBtnElem.disabled = false
-			// disabled right btn (by _slide_ on the last picture)
+			// disabled right btn (by _sliding_ on the last picture)
 			if (index >= modalImgElem.length - 1) {
 				modalRightBtnElem.disabled = true
 			} else {
@@ -104,10 +104,10 @@ var handler = function() {
 	// close menu btn
 	function CloseMenu () {
 		modalElem.classList.remove('displayFlex')
-		for (var i = 0; i < modalImgElem.length; i++) {
+		for (var i = 0, len = modalImgElem.length; i < len; i++) {
 			modalImgElem[i].style.display = 'none'
 		}
-		for (var i = 0; i < section.length; i++) {
+		for (var i = 0, len = section.length; i < len; i++) {
 			section[i].style.filter = 'blur(0)'
 		}
 		// allow to scroll
@@ -135,7 +135,7 @@ var handler = function() {
 }
 
 // aplay function by click on img
-for (var i = 0; i < gelleryImgElem.length; i++) {
+for (var i = 0, len = gelleryImgElem.length; i < len; i++) {
 	gelleryImgElem[i].setAttribute('data-index', i)
 	gelleryImgElem[i].onclick = handler
 }
@@ -162,7 +162,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 // Mobile lazy load
 //		delate (main part) action lazy load on PC
 function justLoadAllImg() {
-	for (var i = 0; i < gelleryImgElem.length; i++) {
+	for (var i = 0, len = gelleryImgElem.length; i < len; i++) {
 		let srcGellery = gelleryImgElem[i].getAttribute('src')
 		let srcModal = modalImgElem[i].getAttribute('data-lazy')
 		// delete '-thumbnail' from src
@@ -224,7 +224,7 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 	const targets = document.querySelectorAll('.gellery__img-wrap')
 
 	// firstly - all img is noFocus
-	for (var i = 0; i < targets.length; i++) {
+	for (var i = 0, len = targets.length; i < len; i++) {
 		targets[i].classList.add('noFocus')
 	}
 
