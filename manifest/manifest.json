@@ -1,0 +1,15 @@
+{
+  "name": "Картины на заказ",
+  "short_name": "Картины на заказ",
+  "theme_color": "#1d1d1d",
+  "background_color": "#1d1d1d",
+  "display": "browser",
+  "icons": [
+    {
+      "src": "img/favicon48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
+}
