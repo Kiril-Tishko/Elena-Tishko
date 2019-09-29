@@ -355,7 +355,7 @@ function Scroll() {
 
 	// gallery title
 	const galleryTitle = document.getElementById('gallery__title')
-	if (positionY > 300) {
+	if (positionY > 240) {
 		galleryTitle.classList.add('visible', 'animated', 'fadeInLeft', 'slow')
 	}
 
