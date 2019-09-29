@@ -10,7 +10,8 @@ const modalLeftBtnElem = document.getElementById('modal-left-btn')
 const modalRightBtnElem = document.getElementById('modal-right-btn')
 
 
-// show modal
+// Modal
+//	show modal
 var handler = function() {
 	// clicked img
 	let index = this.getAttribute('data-index')
@@ -36,14 +37,6 @@ var handler = function() {
 
 	// modal slider
 	//		left btn
-	//				left btn disabled
-	if (index < 1) {
-		modalLeftBtnElem.disabled = true
-	} else {
-		modalLeftBtnElem.disabled = false
-	}
-
-	// left btn
 	function leftSlide () {
 		if (index > 0) {
 			// hide all img
@@ -65,14 +58,14 @@ var handler = function() {
 		}
 	}
 
-	// disabled right btn (by _clicking_ on the last picture)
-	if (index >= modalImgElem.length - 1) {
-		modalRightBtnElem.disabled = true
+	//		left btn disabled
+	if (index < 1) {
+		modalLeftBtnElem.disabled = true
 	} else {
-		modalRightBtnElem.disabled = false
+		modalLeftBtnElem.disabled = false
 	}
 
-	// right btn
+	//		right btn
 	function rightSlide () {
 		if (index < modalImgElem.length - 1) {
 			// hide all img
@@ -94,11 +87,18 @@ var handler = function() {
 		}
 	}
 
-	// slide img by keydown
+	//				disabled right btn (by _clicking_ on the last picture)
+	if (index >= modalImgElem.length - 1) {
+		modalRightBtnElem.disabled = true
+	} else {
+		modalRightBtnElem.disabled = false
+	}
+
+	//		slide img by keydown
 	function keydownSlide() {
 		if (event.keyCode === 37) {leftSlide() }
-		if (event.keyCode === 39) {rightSlide() }
-	}
+			if (event.keyCode === 39) {rightSlide() }
+		}
 
 	// close menu btn
 	function CloseMenu () {
@@ -113,14 +113,14 @@ var handler = function() {
 		window.removeEventListener('touchmove', myPrevDef, {passive: false});
 	}
 
-	// close modal by screen rotate
+	//		close modal by screen rotate
 	window.addEventListener("orientationchange", function() {
 		if (window.orientation = 90) {
 			CloseMenu()
 		}
 	}, false);
 
-	// close modal by keydown(Esc)
+	//		close modal by keydown(Esc)
 	function keydownCloseMenu() {
 		if (event.keyCode === 27) { CloseMenu() }
 	}
@@ -159,6 +159,14 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 
 
 // Mobile lazy load
+//		load img thumbnail
+for (var i = gelleryImgElem.length; i--;) {
+	let srcGellery = gelleryImgElem[i].getAttribute('data-lazy')
+	// set atribute
+	gelleryImgElem[i].setAttribute('src', srcGellery)
+}
+
+
 //		delate (main part) action lazy load on PC
 function justLoadAllImg() {
 	for (var i = gelleryImgElem.length; i--;) {
@@ -177,7 +185,7 @@ if (window.matchMedia("(min-width: 525px)").matches) {
 }
 
 
-// lazy load on mobile
+//		lazy load on mobile
 if (window.matchMedia("(max-width: 525px)").matches) {
 	const targets = document.querySelectorAll('.gellery__img');
 
@@ -210,12 +218,13 @@ if (window.matchMedia("(max-width: 525px)").matches) {
 	targets.forEach(lazyLoad);
 }
 
-// load modal img by screen rotate to horizontal
+//		load modal img by screen rotate to horizontal
 window.addEventListener("orientationchange", function() {
 	if (window.orientation = 90) {
 		justLoadAllImg()
 	}
 }, false);
+
 
 
 // Focus img that in the middel of screen
@@ -257,7 +266,7 @@ if (window.matchMedia("(max-width: 686px)").matches) {
 	targets.forEach(lazyLoad)
 }
 
-// first & last img is in focus
+//		first & last img is in focus
 function firstLastImg() {
 	if(gelleryImgWrapElem[1].classList.contains('Focus') === true || gelleryImgWrapElem[gelleryImgWrapElem.length - 1].classList.contains('Focus') === true) {
 		gelleryImgWrapElem[0].classList.add('noFocus')
