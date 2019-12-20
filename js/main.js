@@ -159,12 +159,12 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 
 
 // Mobile lazy load
-//		load img thumbnail
-for (var i = gelleryImgElem.length; i--;) {
-	let srcGellery = gelleryImgElem[i].getAttribute('data-lazy')
-	// set atribute
-	gelleryImgElem[i].setAttribute('src', srcGellery)
-}
+// //		load img thumbnail
+// for (var i = gelleryImgElem.length; i--;) {
+// 	let srcGellery = gelleryImgElem[i].getAttribute('data-lazy')
+// 	// set atribute
+// 	gelleryImgElem[i].setAttribute('src', srcGellery)
+// }
 
 
 //		delate (main part) action lazy load on PC
